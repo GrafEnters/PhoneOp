@@ -7,7 +7,8 @@ namespace Levitan {
         [SerializeField]
         private RectTransform _cursorMenu;
 
-
+        [SerializeField]
+        private DialogEditPanel _dialogEditPanel;
 
         public void ShowCursorMenu(Vector3 position) {
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -22,6 +23,11 @@ namespace Levitan {
             //position.z =   _cursorMenu.localPosition.z;
             _cursorMenu.position =  transform.TransformPoint(movePos);
         }
+
+        public void OpenDialogEditPanel(DialogData dialogData) {
+            _dialogEditPanel.Open(dialogData);
+        }
+        
 
         public void Init() {
           

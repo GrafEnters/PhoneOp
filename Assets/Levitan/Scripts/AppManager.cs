@@ -2,16 +2,20 @@ using UnityEngine;
 
 namespace Levitan {
     public class AppManager : MonoBehaviour {
+
+        public static AppManager instance;
+        
         [SerializeField]
-        private CameraController _cameraController;
+        public CameraController _cameraController;
 
         [SerializeField]
-        private UIManager _uiManager;
+        public UIManager _uiManager;
 
         [SerializeField]
-        private WorkspaceManager _workspaceManager;
+        public WorkspaceManager _workspaceManager;
 
         private void Awake() {
+            instance = this;
             _cameraController.Init(_uiManager, _workspaceManager);
             _uiManager.Init();
             _workspaceManager.Init(_cameraController);
