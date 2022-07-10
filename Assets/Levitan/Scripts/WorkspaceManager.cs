@@ -15,14 +15,14 @@ namespace Levitan {
         }
 
         public void InstantiateDialog() {
-            GameObject draggable = Instantiate(DialogPrefab, _cameraController.GetDialogPosition(), Quaternion.identity,
+            GameObject draggable = Instantiate(DialogPrefab, CameraController.GetDialogPosition(), Quaternion.identity,
                 transform);
             draggable.SetActive(true);
         }
 
         public void InstantiateTag() {
             GameObject draggable =
-                Instantiate(TagPrefab, _cameraController.GetDialogPosition(), Quaternion.identity, transform);
+                Instantiate(TagPrefab, CameraController.GetDialogPosition(), Quaternion.identity, transform);
             draggable.SetActive(true);
         }
     }

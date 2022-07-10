@@ -2,24 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="254b888f-264e-4a75-a998-ca6c4f833ff0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.plastic/plastic.changes" beforeDir="false" afterPath="$PROJECT_DIR$/.plastic/plastic.changes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.plastic/plastic.wktree" beforeDir="false" afterPath="$PROJECT_DIR$/.plastic/plastic.wktree" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/TrainingManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/TrainingManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/WelcomeLetter.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/WelcomeLetter.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AdminPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AdminPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SaveManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TrainingManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TrainingManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Art/Background_Pattern.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Art/Background_Pattern.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/Background.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/Background.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/TestModels_2/Menu/Materials/2888999053.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/TestModels_2/Menu/Materials/2888999053.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Models/TestModels_2/Menu/Materials/WindowBackground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/TestModels_2/Menu/Materials/WindowBackground.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Alexander SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/Alexander SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/AnonymousPro-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Fonts/AnonymousPro-Regular SDF.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
@@ -41,7 +42,16 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Scripts/AdminPanel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40205bb2cb25478a9cb0f5e54cf11441157400/5f/c9dd7b1f/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40205bb2cb25478a9cb0f5e54cf11441157400/d8/e96b9d1d/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/AppManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/Background.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/IAppModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/NotUIButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventTrigger.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -96,10 +106,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20800">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20800" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -122,6 +132,8 @@
       <workItem from="1651344965012" duration="316000" />
       <workItem from="1655047534200" duration="1844000" />
       <workItem from="1657129192729" duration="2118000" />
+      <workItem from="1657293153785" duration="1990000" />
+      <workItem from="1657455534284" duration="10172000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил загрузку, первую меняющиеся бъекты в меню и trainingManager.">
       <created>1646778182587</created>
@@ -165,7 +177,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655052358338</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="FIXES AND MENU&#10;&#10;other fixes&#10;&#10;Menu letters&#10;&#10;FIXES&#10;&#10;Added lightning to menu&#10;&#10;Added textures to MenuScene&#10;&#10;trainingManager debug">
+      <created>1657223119102</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657223119102</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Levitan Camera base">
+      <created>1657240075767</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657240075767</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +219,27 @@
     <MESSAGE value="trainingManager debug" />
     <MESSAGE value="Added textures to MenuScene" />
     <MESSAGE value="Added lightning to menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added lightning to menu" />
+    <MESSAGE value="FIXES AND MENU&#10;&#10;other fixes&#10;&#10;Menu letters&#10;&#10;FIXES&#10;&#10;Added lightning to menu&#10;&#10;Added textures to MenuScene&#10;&#10;trainingManager debug" />
+    <MESSAGE value="Levitan Camera base" />
+    <option name="LAST_COMMIT_MESSAGE" value="Levitan Camera base" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs</url>
+          <line>18</line>
+          <properties documentPath="D:\Unity Projects\PhoneOp\Assets\Levitan\Scripts\IDraggable.cs" initialLine="21" containingFunctionPresentation="method 'OnMouseDrag'">
+            <startOffsets>
+              <option value="483" />
+            </startOffsets>
+            <endOffsets>
+              <option value="541" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

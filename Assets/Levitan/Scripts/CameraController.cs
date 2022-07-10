@@ -1,8 +1,15 @@
+using System;
 using UnityEngine;
 
 namespace Levitan {
     public class CameraController : MonoBehaviour, IAppModule {
-        private Camera _mainCamera;
+        public float moveMultiplier;
+        public float ScreenEdgeMultiplier;
+        public float zoomMultiplier;
+        public float minZoom, maxZoom;
+        public float lerpSpeed = 0.3f;
+
+        private Transform _mainCamera;
         private Vector3 _mouseStartPos;
         private Vector3 _cameraStartPos;
         private Vector3 _dialogOffset;
@@ -19,46 +26,59 @@ namespace Levitan {
         private WorkspaceManager _workspaceManager;
 
         public void Init(UIManager uiManager, WorkspaceManager workspaceManager) {
-            _mainCamera = Camera.main;
+            _mainCamera = Camera.main.transform;
             _uiManager = uiManager;
             _workspaceManager = workspaceManager;
         }
 
         private void Update() {
             if (_isDragging) {
-                if (Input.GetMouseButtonUp(0)) {
-                    EndDrag();
-                    return;
-                }
+                return;
+            }
 
-                Vector3 delta = MousePosition - _mouseStartPos;
-                if (delta.magnitude > minMoveDelta) {
-                    Vector3 target = _cameraStartPos - delta;
-                    MoveCameraToTarget(target);
-                }
-            } else if (Input.GetMouseButtonDown(1)) {
+            if (Input.GetMouseButtonDown(1)) {
                 _uiManager.ShowCursorMenu(MousePosition * 100);
+            } else if (Input.mouseScrollDelta.y != 0) {
+                float zoomDelta = Input.mouseScrollDelta.y * -1;
+                Vector3 delta = MousePosition;
+
+                if (Input.mouseScrollDelta.y > 0) {
+                    Vector3 target = _mainCamera.position + delta;
+                    ZoomCameraToTarget(target, zoomDelta);
+                } else {
+                    ZoomBack(zoomDelta);
+                }
             }
         }
 
+        private void LateUpdate() {
+            _isDragging = false;
+        }
+
         public Vector3 MousePosition => (Input.mousePosition - new Vector3(Screen.width, Screen.height) / 2) / 100;
+        private float ZoomPercent => Mathf.Abs(_mainCamera.position.z / minZoom);
 
-        public Vector3 GetDialogPosition() {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                _workspaceManager.transform as RectTransform,
-                Input.mousePosition, Camera.main,
-                out Vector2 movePos);
-
-            Vector3 pos = new Vector3(movePos.x, movePos.y, 0) / 100;
-            Vector3 final = transform.TransformPoint(pos) - _mainCamera.transform.position;
+        public static Vector3 GetDialogPosition() {
+            Vector3 screenPos = Input.mousePosition;
+            screenPos.z = Camera.main.nearClipPlane + 1;
+            Vector3 final = Camera.main.ScreenToWorldPoint(screenPos);
             final.z = 0;
             return final;
         }
 
+        public void DragCamera() {
+            Vector3 deltaMouse = Input.mousePosition - _mouseStartPos;
+            deltaMouse *= moveMultiplier * (ZoomPercent + 1);
+            if (deltaMouse.magnitude > minMoveDelta) {
+                Vector3 target = _cameraStartPos - deltaMouse * moveMultiplier * (ZoomPercent+1);
+                MoveCameraToTarget(target);
+                _isDragging = true;
+            }
+        }
+
         public void StartDrag() {
-            _mouseStartPos = MousePosition;
-            _cameraStartPos = _mainCamera.transform.position;
-            _isDragging = true;
+            _cameraStartPos = _mainCamera.position;
+            _mouseStartPos = Input.mousePosition;
         }
 
         public void EndDrag() {
@@ -66,35 +86,36 @@ namespace Levitan {
         }
 
         public void BeginDragDialog(Transform dialogTransform) {
-            _dialogOffset = dialogTransform.position - _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            _dialogOffset = dialogTransform.position - GetDialogPosition();
         }
 
         public void DragDialog(RectTransform dialogTransform) {
-            dialogTransform.position = GetDialogPosition();
-            return;
-
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                dialogTransform.parent as RectTransform,
-                Input.mousePosition, Camera.main,
-                out Vector2 movePos);
-
-            Vector3 pos = new Vector3(movePos.x, movePos.y, 0) / 100;
-            dialogTransform.position = transform.TransformPoint(pos);
-            pos = dialogTransform.position - _mainCamera.transform.position;
-            pos.z = 0;
-            dialogTransform.position = pos;
+            dialogTransform.position = _dialogOffset + GetDialogPosition();
         }
 
         private void MoveCameraToTarget(Vector3 target) {
             target = new Vector3(Mathf.Clamp(target.x, _workspaceBounds.x * -1, _workspaceBounds.x),
-                Mathf.Clamp(target.y, _workspaceBounds.y * -1, _workspaceBounds.y), target.z);
-            _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, target, 0.3f);
+                Mathf.Clamp(target.y, _workspaceBounds.y * -1, _workspaceBounds.y),  _mainCamera.position.z);
+            _mainCamera.position = Vector3.Lerp(_mainCamera.position, target, lerpSpeed);
         }
 
         private void ZoomCameraToTarget(Vector3 target, float zoomDelta) {
-            // target = new Vector3(Mathf.Clamp(target.x, _workspaceBounds.x * -1, _workspaceBounds.x),
-            //     Mathf.Clamp(target.y, _workspaceBounds.y * -1, _workspaceBounds.y), target.z);
-            // _mainCamera.transform.position = Vector3.Lerp(_mainCamera.transform.position, target, 0.3f);
+            target = new Vector3(Mathf.Clamp(target.x, _workspaceBounds.x * -1, _workspaceBounds.x),
+                Mathf.Clamp(target.y, _workspaceBounds.y * -1, _workspaceBounds.y), _mainCamera.position.z);
+
+            float newSize = Camera.main.orthographicSize + zoomDelta;
+            newSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+            Camera.main.orthographicSize = newSize;
+            _mainCamera.position = Vector3.Lerp(_mainCamera.position, target, lerpSpeed);
+        }
+
+        private void ZoomBack(float zoomDelta) {
+            Vector3 target = _mainCamera.position;
+
+            float newSize = Camera.main.orthographicSize + zoomDelta;
+            newSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+            Camera.main.orthographicSize = newSize;
+            _mainCamera.position = Vector3.Lerp(_mainCamera.position, target, lerpSpeed);
         }
     }
 }

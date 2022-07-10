@@ -1,16 +1,28 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
 namespace Levitan {
-    public class Background : MonoBehaviour, IPointerDownHandler {
+    public class Background : MonoBehaviour {
         [SerializeField]
         private UnityEvent OnDragAction;
 
-        public void OnPointerDown(PointerEventData eventData) {
-            if (eventData.button == 0) {
-                OnDragAction?.Invoke();
+        [SerializeField]
+        private UnityEvent OnStartDragAction;
+
+        private bool _isDragging;
+
+        private void OnMouseDrag() {
+            if (!_isDragging) {
+                OnStartDragAction?.Invoke();
             }
+
+            _isDragging = true;
+            OnDragAction?.Invoke();
+        }
+
+        private void OnMouseUp() {
+            _isDragging = false;
         }
     }
 }
