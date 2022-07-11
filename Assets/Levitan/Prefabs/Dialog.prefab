@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 45124836}
   - component: {fileID: 45124837}
   m_Layer: 5
-  m_Name: Edge (2)
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8137589159192264167}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &45124837
 SpriteRenderer:
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 446581806}
   - component: {fileID: 446581807}
   m_Layer: 5
-  m_Name: Edge (1)
+  m_Name: Edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8137589159192264167}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &446581807
 SpriteRenderer:
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -871775083
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 699a1df583ae78744be48441f9834d72, type: 3}
   m_Color: {r: 0, g: 1, b: 0.39058113, a: 1}
   m_FlipX: 0
@@ -221,8 +221,8 @@ MonoBehaviour:
   OnClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5999266590259081547}
-        m_TargetAssemblyTypeName: DraggableDialog, Assembly-CSharp
+      - m_Target: {fileID: 8137589159192264165}
+        m_TargetAssemblyTypeName: Levitan.IDraggable, Assembly-CSharp
         m_MethodName: OpenDialogEditPanel
         m_Mode: 1
         m_Arguments:
@@ -548,6 +548,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b213482b7ef39a74bbda45541af83fab, type: 3}
+--- !u!114 &8137589159192264165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1994600553010626167, guid: b213482b7ef39a74bbda45541af83fab,
+    type: 3}
+  m_PrefabInstance: {fileID: 7728379937220428690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8137589159192264171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152ab9ecde06a4b448766f85bacd78c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8137589159192264167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1994600553010626165, guid: b213482b7ef39a74bbda45541af83fab,
@@ -570,6 +582,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ed14a7adf66b174e9d72624b1067169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Data:
+    allText: 
+    name: 
+  DialogName: {fileID: 8137589159250214027}
+  DialogAllText: {fileID: 8323866451297917358}
+--- !u!114 &8137589159250214027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1994600552933768985, guid: b213482b7ef39a74bbda45541af83fab,
+    type: 3}
+  m_PrefabInstance: {fileID: 7728379937220428690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8137589159507438960 stripped

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="254b888f-264e-4a75-a998-ca6c4f833ff0" name="Changes" comment="Finally working zoom &amp; drag">
+    <list default="true" id="254b888f-264e-4a75-a998-ca6c4f833ff0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/CursorMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/CursorMenu.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Draggable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Draggable.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/AppManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/AppManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/FileParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/FileParser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,13 +36,15 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40205bb2cb25478a9cb0f5e54cf11441157400/5f/c9dd7b1f/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40205bb2cb25478a9cb0f5e54cf11441157400/d8/e96b9d1d/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Prefabs/Dialog.prefab.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/83/ef6f48de/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/AppManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/Background.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/CursorMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/IAppModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/NotUIButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventTrigger.cs" root0="SKIP_HIGHLIGHTING" />
@@ -94,10 +102,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20800">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="20800" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -121,7 +129,8 @@
       <workItem from="1655047534200" duration="1844000" />
       <workItem from="1657129192729" duration="2118000" />
       <workItem from="1657293153785" duration="1990000" />
-      <workItem from="1657455534284" duration="12040000" />
+      <workItem from="1657455534284" duration="12384000" />
+      <workItem from="1657477738125" duration="6274000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил загрузку, первую меняющиеся бъекты в меню и trainingManager.">
       <created>1646778182587</created>
@@ -186,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657466418001</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Base dialogEditing">
+      <created>1657468792485</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1657468792485</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,25 +233,7 @@
     <MESSAGE value="FIXES AND MENU&#10;&#10;other fixes&#10;&#10;Menu letters&#10;&#10;FIXES&#10;&#10;Added lightning to menu&#10;&#10;Added textures to MenuScene&#10;&#10;trainingManager debug" />
     <MESSAGE value="Levitan Camera base" />
     <MESSAGE value="Finally working zoom &amp; drag" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally working zoom &amp; drag" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs</url>
-          <line>18</line>
-          <properties documentPath="D:\Unity Projects\PhoneOp\Assets\Levitan\Scripts\IDraggable.cs" initialLine="21" containingFunctionPresentation="method 'OnMouseDrag'">
-            <startOffsets>
-              <option value="483" />
-            </startOffsets>
-            <endOffsets>
-              <option value="541" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Base dialogEditing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Base dialogEditing" />
   </component>
 </project>

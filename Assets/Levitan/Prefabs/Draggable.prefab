@@ -252,7 +252,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1994600553010626167}
+        m_TargetAssemblyTypeName: Levitan.IDraggable, Assembly-CSharp
+        m_MethodName: ChangeName
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -392,6 +404,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 152ab9ecde06a4b448766f85bacd78c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data:
+    ID: 
+    Type: 0
+    _dialogData:
+      allText: 
+      name: 
+    position: {x: 0, y: 0, z: 0}
+    _connectionsList: []
 --- !u!61 &1994600553010626162
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -935,7 +955,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -871775083
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 699a1df583ae78744be48441f9834d72, type: 3}
   m_Color: {r: 0, g: 1, b: 0.39058113, a: 1}
   m_FlipX: 0
