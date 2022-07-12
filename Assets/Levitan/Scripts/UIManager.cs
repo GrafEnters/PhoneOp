@@ -29,7 +29,7 @@ namespace Levitan {
             _cursorMenu.position = transform.TransformPoint(movePos);
         }
 
-        public void OpenDialogEditPanel(DialogData dialogData) {
+        public void OpenDialogEditPanel(DraggableDialog dialogData) {
             _dialogEditPanel.Open(dialogData);
         }
 

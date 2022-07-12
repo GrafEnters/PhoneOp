@@ -4,15 +4,12 @@
     <list default="true" id="254b888f-264e-4a75-a998-ca6c4f833ff0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/CursorMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/CursorMenu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Draggable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Draggable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/AppManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/AppManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/DialogEditPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/DialogEditPanel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/FileParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/FileParser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
@@ -102,10 +99,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19200">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="19200" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -130,7 +127,9 @@
       <workItem from="1657129192729" duration="2118000" />
       <workItem from="1657293153785" duration="1990000" />
       <workItem from="1657455534284" duration="12384000" />
-      <workItem from="1657477738125" duration="6274000" />
+      <workItem from="1657477738125" duration="7650000" />
+      <workItem from="1657526888435" duration="48000" />
+      <workItem from="1657596226131" duration="1219000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил загрузку, первую меняющиеся бъекты в меню и trainingManager.">
       <created>1646778182587</created>
@@ -202,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657468792485</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="SaveLoad to json basic">
+      <created>1657500552963</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1657500552963</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +240,7 @@
     <MESSAGE value="Levitan Camera base" />
     <MESSAGE value="Finally working zoom &amp; drag" />
     <MESSAGE value="Base dialogEditing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base dialogEditing" />
+    <MESSAGE value="SaveLoad to json basic" />
+    <option name="LAST_COMMIT_MESSAGE" value="SaveLoad to json basic" />
   </component>
 </project>
