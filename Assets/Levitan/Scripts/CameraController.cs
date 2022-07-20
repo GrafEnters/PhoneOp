@@ -24,6 +24,7 @@ namespace Levitan {
 
         private UIManager _uiManager;
         private WorkspaceManager _workspaceManager;
+        public static bool IsDrawingLine;
 
         public void Init(UIManager uiManager, WorkspaceManager workspaceManager) {
             _mainCamera = Camera.main.transform;
@@ -36,7 +37,7 @@ namespace Levitan {
                 return;
             }
 
-            if (Input.GetMouseButtonDown(1)) {
+            if (Input.GetMouseButtonDown(1) && !IsDrawingLine &&!Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition))) {
                 _uiManager.ShowCursorMenu(MousePosition * 100);
             } else if (Input.mouseScrollDelta.y != 0) {
                 float zoomDelta = Input.mouseScrollDelta.y * -1;

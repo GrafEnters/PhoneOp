@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Levitan {
     [RequireComponent(typeof(BoxCollider2D))]
@@ -11,7 +12,6 @@ namespace Levitan {
         
         [SerializeField]
         protected TMP_InputField DialogName;
-
         public void Init() {
             _mainCamera = Camera.main;
             _data = new DraggableData {
@@ -36,7 +36,7 @@ namespace Levitan {
             _data._dialogData.name = newName;
         }
 
-        public void DrawConnection(Connections type, IDraggable target) {
+        public void DrawConnection(ConnectionTypes type, IDraggable target) {
         }
 
         public DraggableData CollectData() {
@@ -51,6 +51,10 @@ namespace Levitan {
             Transform transform1 = transform;
             transform1.position = CameraController.GetDialogPosition() - _dragOffset;
             _data.position = transform1.position;
+        }
+
+        public virtual void SpawnConnection() {
+            WorkspaceManager.instance.InstantiateConnection(this);
         }
 
         public void DestroyDraggable() {

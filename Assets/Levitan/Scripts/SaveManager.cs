@@ -56,16 +56,16 @@ namespace Levitan {
         public DraggableType Type;
         public DialogData _dialogData;
         public Vector3 position = Vector3.zero;
-        public List<Connection> _connectionsList = new();
+        public List<ConnectionData> _connectionsList = new();
     }
 
     [System.Serializable]
-    public class Connection {
-        public Connections type;
+    public class ConnectionData {
+        public ConnectionTypes type;
         public DraggableData target;
     }
 
-    public enum Connections {
+    public enum ConnectionTypes {
         Require,
         RequireFalse,
         Creates

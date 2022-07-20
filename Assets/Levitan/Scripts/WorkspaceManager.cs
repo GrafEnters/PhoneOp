@@ -4,18 +4,27 @@ using UnityEngine;
 
 namespace Levitan {
     public class WorkspaceManager : MonoBehaviour, IAppModule {
+        public static WorkspaceManager instance;
+
         [SerializeField]
         private Transform _draggableHolder;
-        
+
         [SerializeField]
         private IDraggable DialogPrefab;
 
         [SerializeField]
         private IDraggable TagPrefab;
 
+        [SerializeField]
+        private Connection ConnectionPrefab;
+
         private CameraController _cameraController;
 
         private List<IDraggable> _draggables = new();
+
+        private void Awake() {
+            instance = this;
+        }
 
         public void Init(CameraController cameraController) {
             _cameraController = cameraController;
@@ -28,6 +37,7 @@ namespace Levitan {
             if (data != null) {
                 draggable.SetData(data);
             }
+
             _draggables.Add(draggable);
             draggable.gameObject.SetActive(true);
             return draggable;
@@ -37,6 +47,7 @@ namespace Levitan {
             foreach (Transform child in _draggableHolder) {
                 Destroy(child.gameObject);
             }
+
             _draggables.Clear();
         }
 
@@ -60,21 +71,28 @@ namespace Levitan {
         }
 
         public void InstantiateDialog(DraggableData data = null) {
-            IDraggable draggable =  InstantiateDraggable(DialogPrefab, data);
+            IDraggable draggable = InstantiateDraggable(DialogPrefab, data);
             draggable._data.Type = DraggableType.Dialog;
         }
 
         public void InstantiateTag(DraggableData data = null) {
-            IDraggable draggable =  InstantiateDraggable(TagPrefab, data);
+            IDraggable draggable = InstantiateDraggable(TagPrefab, data);
             draggable._data.Type = DraggableType.Tag;
+        }
+
+        public void InstantiateConnection(IDraggable start) {
+            Connection connection = Instantiate(ConnectionPrefab, CameraController.GetDialogPosition(),
+                Quaternion.identity, _draggableHolder);
+            connection.gameObject.SetActive(true);
+            connection.Init(start);
         }
 
         public void DeleteDraggable(IDraggable objectToDelete) {
             if (_draggables.Contains(objectToDelete)) {
                 _draggables.Remove(objectToDelete);
             }
+
             Destroy(objectToDelete.gameObject);
-            
         }
     }
 }
