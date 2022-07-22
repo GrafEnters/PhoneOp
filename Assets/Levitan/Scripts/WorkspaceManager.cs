@@ -20,7 +20,7 @@ namespace Levitan {
 
         private CameraController _cameraController;
 
-        private List<IDraggable> _draggables = new();
+        private Dictionary<string, IDraggable> _draggables = new();
 
         private void Awake() {
             instance = this;
@@ -38,7 +38,7 @@ namespace Levitan {
                 draggable.SetData(data);
             }
 
-            _draggables.Add(draggable);
+            _draggables.Add(draggable._data.ID, draggable);
             draggable.gameObject.SetActive(true);
             return draggable;
         }
@@ -64,10 +64,19 @@ namespace Levitan {
                         break;
                 }
             }
+
+            foreach (var idraggable in _draggables.Values) {
+                idraggable.SpawnConnections();
+            }
         }
 
         public List<DraggableData> CollectWorkspace() {
-            return _draggables.Select(draggable => draggable._data).ToList();
+            List<DraggableData> datas = new();
+            foreach (var idraggable in _draggables.Values) {
+                datas.Add(idraggable.CollectData());
+            }
+
+            return datas;
         }
 
         public void InstantiateDialog(DraggableData data = null) {
@@ -80,18 +89,20 @@ namespace Levitan {
             draggable._data.Type = DraggableType.Tag;
         }
 
-        public void InstantiateConnection(IDraggable start) {
+        public Connection InstantiateConnection(IDraggable start) {
             Connection connection = Instantiate(ConnectionPrefab, CameraController.GetDialogPosition(),
                 Quaternion.identity, _draggableHolder);
             connection.gameObject.SetActive(true);
             connection.Init(start);
+            return connection;
+        }
+
+        public IDraggable GetDraggableById(string id) {
+            return _draggables[id];
         }
 
         public void DeleteDraggable(IDraggable objectToDelete) {
-            if (_draggables.Contains(objectToDelete)) {
-                _draggables.Remove(objectToDelete);
-            }
-
+            _draggables.Remove(objectToDelete._data.ID);
             Destroy(objectToDelete.gameObject);
         }
     }

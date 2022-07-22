@@ -62,7 +62,8 @@ namespace Levitan {
     [System.Serializable]
     public class ConnectionData {
         public ConnectionTypes type;
-        public DraggableData target;
+        public string start;
+        public string end;
     }
 
     public enum ConnectionTypes {

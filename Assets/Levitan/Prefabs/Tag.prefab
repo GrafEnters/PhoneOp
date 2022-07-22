@@ -142,6 +142,21 @@ PrefabInstance:
       propertyPath: _data.Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1994600553010626167, guid: b213482b7ef39a74bbda45541af83fab,
+        type: 3}
+      propertyPath: sizeRect.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1994600553010626167, guid: b213482b7ef39a74bbda45541af83fab,
+        type: 3}
+      propertyPath: sizeRect.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1994600553010626167, guid: b213482b7ef39a74bbda45541af83fab,
+        type: 3}
+      propertyPath: sizeRect.width
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1994600553010626169, guid: b213482b7ef39a74bbda45541af83fab,
         type: 3}
       propertyPath: m_Name
