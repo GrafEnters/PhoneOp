@@ -2317,6 +2317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f1a55bc3ee7614490a6cab5a520cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsRememberCameraPosition: 0
   ProjectSavePath: 
 --- !u!4 &2070354923
 Transform:

@@ -110,6 +110,11 @@ namespace Levitan {
             _mainCamera.position = Vector3.Lerp(_mainCamera.position, target, lerpSpeed);
         }
 
+        public void SetSize(float newSize) {
+            newSize = Mathf.Clamp(newSize, minZoom, maxZoom);
+            Camera.main.orthographicSize = newSize;
+        }
+
         private void ZoomBack(float zoomDelta) {
             Vector3 target = _mainCamera.position;
 

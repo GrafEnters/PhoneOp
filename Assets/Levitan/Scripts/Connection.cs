@@ -64,6 +64,18 @@ namespace Levitan {
         public void StopDrawing() {
             if (_tempTarget != null) {
                 _endPoint = _tempTarget;
+
+                if (_startPoint is not DraggableDialog && _endPoint is not DraggableDialog) {
+                    Debug.Log("You can't connect TAG to TAG");
+                    CancelConnection();
+                    return;
+                }
+
+                if (_startPoint.HasSameConnection(_endPoint._data.ID)) {
+                    Debug.Log("You already draw this connection.");
+                    CancelConnection();
+                    return;
+                }
                 _isDragging = false;
                 //SendThemMessages
                 _startPoint.AddConnection(this);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,6 +19,7 @@ namespace Levitan {
         protected TMP_InputField DialogName;
 
         private List<Connection> _connections = new();
+        private bool _isDragging;
 
         public void Init() {
             _mainCamera = Camera.main;
@@ -63,17 +65,30 @@ namespace Levitan {
 
         private void OnMouseDown() {
             _dragOffset = CameraController.GetDialogPosition() - transform.position;
+            _dragOffset.z = 2;
         }
 
         private void OnMouseDrag() {
             if (CameraController.IsDrawingLine) {
                 return;
             }
+
+            _isDragging = true;
             Transform transform1 = transform;
-            transform1.position = CameraController.GetDialogPosition() - _dragOffset;
+            Vector3 pos = CameraController.GetDialogPosition() - _dragOffset;
             _data.position = transform1.position;
+            transform1.position = pos;
             foreach (Connection connection in _connections) {
                 connection.Redraw();
+            }
+        }
+
+        private void OnMouseUp() {
+            if (_isDragging) {
+                _isDragging = false;
+                Vector3 pos = transform.position;
+                pos.z = 0;
+                transform.position = pos;
             }
         }
 
@@ -106,7 +121,12 @@ namespace Levitan {
             res.y = Mathf.Clamp(res.y, sizeRect.y / 2 * -1, sizeRect.y / 2);
             Debug.Log(position + "   " + res);
             res += transform.position;
+            res.z = 0;
             return res;
+        }
+
+        public bool HasSameConnection(string target) {
+            return _connections.Any(connection => connection.CollectData().end == target);
         }
 
         public void DestroyDraggable() {
