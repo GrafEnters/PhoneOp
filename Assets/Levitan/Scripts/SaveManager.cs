@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using SimpleFileBrowser;
 
@@ -14,7 +13,6 @@ namespace Levitan {
         private ProjectData _projectData = new();
 
         private WorkspaceManager _workspaceManager;
-        private string _selectedPath;
 
         public void Init(WorkspaceManager workspaceManager) {
             _workspaceManager = workspaceManager;
@@ -29,16 +27,16 @@ namespace Levitan {
         }
 
         public IEnumerator LoadProject() {
-            yield return StartCoroutine(ShowLoadCoroutine());
+            yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, null,
+                "Select file to load", "Load");
             if (FileBrowser.Success) {
-                string json = File.ReadAllText(_selectedPath);
+                string json = File.ReadAllText(FileBrowser.Result[0]);
                 _projectData = JsonUtility.FromJson<ProjectData>(json);
                 _workspaceManager.LoadWorkspace(_projectData._draggableDatas);
                 PlaceCamera();
             } else {
                 Debug.Log("You dont select file");
             }
-          
         }
 
         private void PlaceCamera() {
@@ -78,55 +76,44 @@ namespace Levitan {
             }
         }
 
-        public void SaveProject() {
-            _projectData._draggableDatas = _workspaceManager.CollectWorkspace();
-            _projectData.cameraPosition = Camera.main.transform.position;
-            _projectData.cameraSize = Camera.main.orthographicSize;
-            string json = JsonUtility.ToJson(_projectData);
-            string path = EditorUtility.SaveFilePanel("Save project as json",
-                "",
-                _projectData.projectName + ".json",
-                "json");
-            File.WriteAllTextAsync(path, json);
-        }
+        public IEnumerator SaveProject() {
+            yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, null,
+                "Select place to save project", "Save");
+            if (FileBrowser.Success) {
+                _projectData._draggableDatas = _workspaceManager.CollectWorkspace();
+                _projectData.cameraPosition = Camera.main.transform.position;
+                _projectData.cameraSize = Camera.main.orthographicSize;
+                string json = JsonUtility.ToJson(_projectData);
+                File.WriteAllTextAsync(FileBrowser.Result[0], json);
+            } else {
+                Debug.Log("You dont select file");
+            }
+        }   
 
-        public void ExportProject() {
-            string json = JsonUtility.ToJson(_projectData);
-            string path = EditorUtility.SaveFolderPanel("Export dialogs as scriptable objects",
-                "",
-                _projectData.projectName + "dialog.asset");
-            _workspaceManager.CollectExportData();
-            foreach (var draggable in _projectData._draggableDatas) {
-                if (draggable.Type == DraggableType.Dialog) {
-                    Dialog asset = FileParser.ParseDialogData(draggable._dialogData);
-                    AssetDatabase.CreateAsset(asset, path + draggable._dialogData.name + ".asset");
+        public IEnumerator ExportProject() {
+            yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, null,
+                "Select folder to export", "Export");
+            if (FileBrowser.Success) {
+                _workspaceManager.CollectExportData();
+                _projectData._draggableDatas = _workspaceManager.CollectWorkspace();
+                foreach (var draggable in _projectData._draggableDatas) {
+                    if (draggable.Type == DraggableType.Dialog) {
+                        Dialog asset = FileParser.ParseDialogData(draggable._dialogData);
+                        string json = JsonUtility.ToJson(asset);
+                        File.WriteAllTextAsync(FileBrowser.Result[0], json);
+                    }
                 }
-            }
-
-            File.WriteAllTextAsync(path, json);
-        }
-
-       /* public void ExportDialog(IDraggable draggable) {
-            string path = SimpleFileBrowser.FileBrowser. SaveFilePanel("Export dialog as scriptableObject",
-                "",
-                draggable._data._dialogData.name + ".asset",
-                "asset");
-        }*/
-        
-        
-        
-        private IEnumerator ShowLoadCoroutine()
-        {
-            // Show a load file dialog and wait for a response from user
-            // Load file/folder: both, Allow multiple selection: true
-            // Initial path: default (Documents), Initial filename: empty
-            // Title: "Load File", Submit button text: "Load"
-            yield return FileBrowser.WaitForLoadDialog( FileBrowser.PickMode.FilesAndFolders, false, null, null, "Load Files and Folders", "Load" );
-            
-            if( FileBrowser.Success ) {
-                _selectedPath = FileBrowser.Result[0];
+            } else {
+                Debug.Log("You dont select folder");
             }
         }
+
+        /* public void ExportDialog(IDraggable draggable) {
+             string path = SimpleFileBrowser.FileBrowser. SaveFilePanel("Export dialog as scriptableObject",
+                 "",
+                 draggable._data._dialogData.name + ".asset",
+                 "asset");
+         }*/
     }
 
     [System.Serializable]

@@ -38,11 +38,11 @@ namespace Levitan {
         }
 
         public void SaveProject() {
-            _saveManager.SaveProject();
+            StartCoroutine(  _saveManager.SaveProject());
         }
         
         public void ExportProject() {
-            _saveManager.ExportProject();
+            StartCoroutine( _saveManager.ExportProject());
         }
     }
 }
