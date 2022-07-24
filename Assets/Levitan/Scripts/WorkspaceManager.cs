@@ -79,6 +79,12 @@ namespace Levitan {
             return datas;
         }
 
+        public void CollectExportData() {
+            foreach (var idraggable in _draggables.Values) {
+                (idraggable as DraggableDialog)?.CollectDialogData();
+            }
+        }
+
         public void InstantiateDialog(DraggableData data = null) {
             IDraggable draggable = InstantiateDraggable(DialogPrefab, data);
             draggable._data.Type = DraggableType.Dialog;
@@ -99,6 +105,10 @@ namespace Levitan {
 
         public IDraggable GetDraggableById(string id) {
             return _draggables[id];
+        }
+
+        public static IDraggable GetDraggableStatic(string id) {
+            return AppManager.instance._workspaceManager.GetDraggableById(id);
         }
 
         public void DeleteDraggable(IDraggable objectToDelete) {

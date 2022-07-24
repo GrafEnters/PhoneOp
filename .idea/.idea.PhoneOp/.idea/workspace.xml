@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="254b888f-264e-4a75-a998-ca6c4f833ff0" name="Changes" comment="">
+    <list default="true" id="254b888f-264e-4a75-a998-ca6c4f833ff0" name="Changes" comment="Saving cameraPos &amp; fixed multiconnections">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PhoneOp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/LevitanScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Dialog.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/Tag.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/DialogEditPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/DialogEditPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Prefabs/DialogEditPanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Prefabs/DialogEditPanel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/Connection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/Connection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/IDraggable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/SaveManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GMCongratsUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GMCongratsUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/TagManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Dialog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Dialog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Person.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Person.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/FileParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/FileParser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,14 +43,25 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40205bb2cb25478a9cb0f5e54cf11441157400/5f/c9dd7b1f/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/40205bb2cb25478a9cb0f5e54cf11441157400/d8/e96b9d1d/UnityEvent.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/83/ef6f48de/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6073cf49ed704e958b8a66d540dea94846a800/9c/a5e40348/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a017e354f3154926a5617fbac3a64fcc80f800/2e/eee8c2d2/AssetDatabase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/LevitanScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Prefabs/Dialog.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Prefabs/Tag.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/AppManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/Background.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Scripts/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/Connection.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Scripts/Connection.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Scripts/Connection.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/CursorMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/DraggableDialog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/IAppModule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Scripts/IDraggable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/NotUIButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/SaveManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Unity Projects/PhoneOp/Assets/Levitan/Scripts/SaveManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Levitan/Scripts/WorkspaceManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventTrigger.cs" root0="SKIP_HIGHLIGHTING" />
@@ -61,6 +81,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.41056034&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rider.run.widget.enabled.cache&quot;: &quot;false&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -99,10 +120,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="19200">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16480">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="19200" />
+      <option name="pid" value="16480" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -129,7 +150,9 @@
       <workItem from="1657455534284" duration="12384000" />
       <workItem from="1657477738125" duration="7650000" />
       <workItem from="1657526888435" duration="48000" />
-      <workItem from="1657596226131" duration="1219000" />
+      <workItem from="1657596226131" duration="2562000" />
+      <workItem from="1658340149679" duration="7243000" />
+      <workItem from="1658499968620" duration="20708000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил загрузку, первую меняющиеся бъекты в меню и trainingManager.">
       <created>1646778182587</created>
@@ -208,7 +231,35 @@
       <option name="project" value="LOCAL" />
       <updated>1657500552963</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="more fixes">
+      <created>1657597997964</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1657597997964</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Connections &amp; ui fixes">
+      <created>1658356583983</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1658356583983</updated>
+    </task>
+    <task id="LOCAL-00014" summary="SaveLoad of connections">
+      <created>1658516839224</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1658516839224</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Saving cameraPos &amp; fixed multiconnections">
+      <created>1658519843282</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1658519843282</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +292,10 @@
     <MESSAGE value="Finally working zoom &amp; drag" />
     <MESSAGE value="Base dialogEditing" />
     <MESSAGE value="SaveLoad to json basic" />
-    <option name="LAST_COMMIT_MESSAGE" value="SaveLoad to json basic" />
+    <MESSAGE value="more fixes" />
+    <MESSAGE value="Connections &amp; ui fixes" />
+    <MESSAGE value="SaveLoad of connections" />
+    <MESSAGE value="Saving cameraPos &amp; fixed multiconnections" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saving cameraPos &amp; fixed multiconnections" />
   </component>
 </project>

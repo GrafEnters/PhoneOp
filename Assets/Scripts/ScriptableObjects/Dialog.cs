@@ -8,8 +8,9 @@ public class Dialog : ScriptableObject {
     public string SayToOperator;
     public List<string> lines;
     public List<BubbleLine> bubbleLines;
-    public List<Tags> requireTags;
-    public List<Tags> forbiddenTags;
+    public List<string> requireTags;
+    public List<string> produceTags;
+    public List<string> forbiddenTags;
 
     public string[] toUnlock;
 

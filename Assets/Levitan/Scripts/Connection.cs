@@ -87,6 +87,7 @@ namespace Levitan {
         }
 
         private void CancelConnection() {
+            _startPoint.RemoveConnection(this);
             CameraController.IsDrawingLine = false;
             _isDragging = false;
             Destroy(gameObject);
@@ -136,6 +137,7 @@ namespace Levitan {
         }
 
         public void DisconnectEnd() {
+            _startPoint.RemoveConnection(this);
             _endPoint.RemoveConnection(this);
             _isDragging = true;
             _tempTarget = null;

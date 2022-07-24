@@ -65,7 +65,7 @@ namespace Levitan {
 
         private void OnMouseDown() {
             _dragOffset = CameraController.GetDialogPosition() - transform.position;
-            _dragOffset.z = 2;
+            _dragOffset.z = 5;
         }
 
         private void OnMouseDrag() {
@@ -103,7 +103,8 @@ namespace Levitan {
         }
 
         public void RemoveConnection(Connection connection) {
-            _connections.Remove(connection);
+            if(_connections.Contains(connection))
+                _connections.Remove(connection);
         }
 
         public Vector3 GetRectEdgeForPosition(Vector3 position) {
@@ -119,7 +120,6 @@ namespace Levitan {
 
             res.x = Mathf.Clamp(res.x, sizeRect.x / 2 * -1, sizeRect.x / 2);
             res.y = Mathf.Clamp(res.y, sizeRect.y / 2 * -1, sizeRect.y / 2);
-            Debug.Log(position + "   " + res);
             res += transform.position;
             res.z = 0;
             return res;

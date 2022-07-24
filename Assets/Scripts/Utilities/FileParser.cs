@@ -24,10 +24,14 @@ public class FileParser : MonoBehaviour {
         }
     }
 
-    public Dialog ParseDialogData(DialogData dialogData) {
-        string text = data.text;
+    public static Dialog ParseDialogData(DialogData dialogData) {
+        string text = dialogData.allText;
         string[] lines = text.Split('\n');
-        return ParseDialog(lines);
+        Dialog res =  ParseDialog(lines);
+        res.requireTags = dialogData.requireTags;
+        res.produceTags = dialogData.produceTags;
+
+        return res;
     }
 
     public void Parse() {
@@ -65,7 +69,7 @@ public class FileParser : MonoBehaviour {
         Dialog dialog = ScriptableObject.CreateInstance<Dialog>();
 
         dialog.lines = new List<string>();
-        dialog.requireTags = new List<Tags>();
+        dialog.requireTags = new List<string>();
         dialog.bubbleLines = new List<BubbleLine>();
         dialog.requirementFrom = PersonShablon.GenerateEmptyShablon();
         dialog.requirementTo = PersonShablon.GenerateEmptyShablon();
@@ -90,17 +94,17 @@ public class FileParser : MonoBehaviour {
                 line = line.Trim();
 
                 string[] unparsed = line.Split(" ", StringSplitOptions.RemoveEmptyEntries);
-                dialog.requireTags = new List<Tags>();
-                dialog.forbiddenTags = new List<Tags>();
+                dialog.requireTags = new List<string>();
+                dialog.forbiddenTags = new List<string>();
                 for (int i = 0; i < unparsed.Length; i++) {
                     if (unparsed[i] == "")
                         continue;
 
                     if (unparsed[i][0] == '!') {
                         string inverted = unparsed[i].Substring(1);
-                        dialog.forbiddenTags.Add((Tags) (Enum.Parse(typeof(Tags), inverted)));
+                        dialog.forbiddenTags.Add((string) (Enum.Parse(typeof(Tags), inverted)));
                     } else {
-                        dialog.requireTags.Add((Tags) (Enum.Parse(typeof(Tags), unparsed[i])));
+                        dialog.requireTags.Add((string) (Enum.Parse(typeof(Tags), unparsed[i])));
                     }
                 }
             }
