@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Levitan {
     public class WorkspaceManager : MonoBehaviour, IAppModule {
-        public static WorkspaceManager instance;
-
         [SerializeField]
         private Transform _draggableHolder;
 
@@ -16,15 +13,17 @@ namespace Levitan {
         private IDraggable TagPrefab;
 
         [SerializeField]
+        private IDraggable ThoughtPrefab;
+        
+        [SerializeField]
+        private IDraggable TransitionPrefab;
+
+        [SerializeField]
         private Connection ConnectionPrefab;
 
         private CameraController _cameraController;
 
         private Dictionary<string, IDraggable> _draggables = new();
-
-        private void Awake() {
-            instance = this;
-        }
 
         public void Init(CameraController cameraController) {
             _cameraController = cameraController;
@@ -62,6 +61,12 @@ namespace Levitan {
                     case DraggableType.Tag:
                         InstantiateTag(draggableData);
                         break;
+                    case DraggableType.Thought:
+                        InstantiateThought(draggableData);
+                        break;
+                    case DraggableType.Transition:
+                        InstantiateTransition(draggableData);
+                        break;
                 }
             }
 
@@ -88,14 +93,40 @@ namespace Levitan {
         public void InstantiateDialog(DraggableData data = null) {
             IDraggable draggable = InstantiateDraggable(DialogPrefab, data);
             draggable._data.Type = DraggableType.Dialog;
+            if (data == null)
+                draggable.ChangeDialogName("New Dialog");
         }
 
         public void InstantiateTag(DraggableData data = null) {
             IDraggable draggable = InstantiateDraggable(TagPrefab, data);
             draggable._data.Type = DraggableType.Tag;
+            if (data == null)
+                draggable.ChangeDialogName("New Tag");
+        }
+
+        public void InstantiateThought(DraggableData data = null) {
+            IDraggable draggable = InstantiateDraggable(ThoughtPrefab, data);
+            draggable._data.Type = DraggableType.Thought;
+            if (data == null)
+                draggable.ChangeDialogName("New Thought");
+        }
+        
+        public void InstantiateTransition(DraggableData data) {
+            DraggableDialog dialog = GetDraggableById(data._dialogData.ID) as DraggableDialog; 
+            IDraggable draggable = InstantiateDraggable(TransitionPrefab, data);
+            draggable._data.Type = DraggableType.Transition;
+            
+            dialog.transitionsHolder.AddEmptyTransition(draggable);
         }
 
         public Connection InstantiateConnection(IDraggable start) {
+            Connection connection = Instantiate(ConnectionPrefab, CameraController.GetDialogPosition(),
+                Quaternion.identity, _draggableHolder);
+            connection.gameObject.SetActive(true);
+            connection.Init(start);
+            return connection;
+        }
+        public Connection InstantiateConnection(IConnectable start) {
             Connection connection = Instantiate(ConnectionPrefab, CameraController.GetDialogPosition(),
                 Quaternion.identity, _draggableHolder);
             connection.gameObject.SetActive(true);

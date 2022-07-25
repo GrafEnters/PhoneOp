@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace Levitan {
     [RequireComponent(typeof(BoxCollider2D))]
-    public class IDraggable : MonoBehaviour {
+    public class IDraggable : MonoBehaviour , IConnectable{
         public DraggableData _data;
         private Vector3 _dragOffset;
         private Camera _mainCamera;
@@ -18,7 +18,7 @@ namespace Levitan {
         [SerializeField]
         protected TMP_InputField DialogName;
 
-        private List<Connection> _connections = new();
+        protected List<Connection> _connections = new();
         private bool _isDragging;
 
         public void Init() {
@@ -30,7 +30,7 @@ namespace Levitan {
             };
         }
 
-        public void ChangeDialogName(string newName) {
+        public virtual void ChangeDialogName(string newName) {
             _data._dialogData.name = newName;
             DialogName.SetTextWithoutNotify(newName);
         }
@@ -44,7 +44,7 @@ namespace Levitan {
         public void SpawnConnections() {
             foreach (ConnectionData connection in _data._connectionsList) {
                 if (connection.start == _data.ID) {
-                    Connection currentConnection = WorkspaceManager.instance.InstantiateConnection(this);
+                    Connection currentConnection = AppManager.instance._workspaceManager.InstantiateConnection(this);
                     currentConnection.SetData(connection);
                 }
             }
@@ -70,7 +70,7 @@ namespace Levitan {
             _dragOffset.z = 5;
         }
 
-        private void OnMouseDrag() {
+        protected virtual void OnMouseDrag() {
             if (CameraController.IsDrawingLine || AppManager.instance._cameraController.IsEditing) {
                 return;
             }
@@ -80,9 +80,13 @@ namespace Levitan {
             Vector3 pos = CameraController.GetDialogPosition() - _dragOffset;
             _data.position = transform1.position;
             transform1.position = pos;
+            RedrawConnections();
+        }
+
+        public virtual void RedrawConnections() {
             foreach (Connection connection in _connections) {
                 connection.Redraw();
-            }
+            }  
         }
 
         private void OnMouseUp() {
@@ -94,22 +98,36 @@ namespace Levitan {
             }
         }
 
+        public string ID => _data.ID;
+        public string Name => _data._dialogData.name;
+        public Vector3 Position => transform.position;
+
         public void SpawnConnection() {
-            Connection connection = WorkspaceManager.instance.InstantiateConnection(this);
+            Connection connection = AppManager.instance._workspaceManager.InstantiateConnection(this);
             connection.StartDrag();
             CameraController.IsDrawingLine = true;
         }
+        
+        public virtual bool CanAddConnection(IConnectable start) {
+            if (start is not DraggableDialog && this is not DraggableDialog) {
+                Debug.Log("You can't connect TAG to TAG");
 
-        public void AddConnection(Connection connection) {
+                return false;
+            }
+
+            return true;
+        }
+
+        public virtual void AddConnection(Connection connection) {
             _connections.Add(connection);
         }
 
-        public void RemoveConnection(Connection connection) {
+        public virtual void RemoveConnection(Connection connection) {
             if(_connections.Contains(connection))
                 _connections.Remove(connection);
         }
 
-        public Vector3 GetRectEdgeForPosition(Vector3 position) {
+        public virtual Vector3 GetRectEdgeForPosition(Vector3 position) {
             Vector3 res = Vector3.zero;
             if (Mathf.Abs(position.x - transform.position.x) / Mathf.Abs(position.y - transform.position.y) <=
                 sizeRect.x / sizeRect.y) {

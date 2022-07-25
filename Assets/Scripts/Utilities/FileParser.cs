@@ -33,6 +33,7 @@ public class FileParser : MonoBehaviour {
         res.SayToOperator = dialogData.SayToOperator;
         res.requirementFrom.roomNumber = dialogData.from;
         res.requirementTo.roomNumber = dialogData.to;
+        res.Transitions = dialogData.transitions;
         return res;
     }
 

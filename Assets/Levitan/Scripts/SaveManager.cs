@@ -88,10 +88,9 @@ namespace Levitan {
             } else {
                 Debug.Log("You dont select file");
             }
-        }   
+        }
 
         public IEnumerator ExportProject() {
-           
             yield return FileBrowser.WaitForSaveDialog(FileBrowser.PickMode.Folders, false, null, null,
                 "Select folder to export", "Export");
             if (FileBrowser.Success) {
@@ -101,7 +100,9 @@ namespace Levitan {
                     if (draggable.Type == DraggableType.Dialog) {
                         Dialog asset = FileParser.ParseDialogData(draggable._dialogData);
                         string json = JsonUtility.ToJson(asset);
-                        File.WriteAllTextAsync(FileBrowser.Result[0] + Path.DirectorySeparatorChar + draggable._dialogData.name + ".json", json);
+                        File.WriteAllTextAsync(
+                            FileBrowser.Result[0] + Path.DirectorySeparatorChar + draggable._dialogData.name + ".json",
+                            json);
                     }
                 }
             } else {
@@ -149,6 +150,8 @@ namespace Levitan {
 
     public enum DraggableType {
         Dialog,
-        Tag
+        Tag,
+        Thought,
+        Transition
     }
 }

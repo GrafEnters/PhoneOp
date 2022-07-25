@@ -11,7 +11,8 @@ public class Dialog : ScriptableObject {
     public List<string> requireTags;
     public List<string> produceTags;
     public List<string> forbiddenTags;
-
+    public List<TransitionData> Transitions;
+    
     public string[] toUnlock;
 
     public int priority; //Сделать парсинг из текста

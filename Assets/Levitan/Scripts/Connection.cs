@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Levitan {
     public class Connection : MonoBehaviour {
-        private IDraggable _startPoint;
-        private IDraggable _endPoint;
+        public IConnectable _startPoint;
+        public IConnectable _endPoint;
 
         [SerializeField]
         private SpriteRenderer _lineEnd;
@@ -24,8 +24,13 @@ namespace Levitan {
             _line.positionCount = 2;
         }
 
+        public void Init(IConnectable start) {
+            _startPoint = start;
+            _line.positionCount = 2;
+        }
+
         public void StartDrag() {
-            if(AppManager.instance._cameraController.IsEditing)
+            if (AppManager.instance._cameraController.IsEditing)
                 return;
             _isDragging = true;
         }
@@ -49,8 +54,9 @@ namespace Levitan {
         }
 
         public void SetData(ConnectionData data) {
-            _startPoint = WorkspaceManager.instance.GetDraggableById(data.start);
-            _endPoint = WorkspaceManager.instance.GetDraggableById(data.end);
+            WorkspaceManager workspaceManager = AppManager.instance._workspaceManager;
+            _startPoint = workspaceManager.GetDraggableById(data.start);
+            _endPoint = workspaceManager.GetDraggableById(data.end);
             _startPoint.AddConnection(this);
             _endPoint.AddConnection(this);
             Redraw();
@@ -58,8 +64,8 @@ namespace Levitan {
 
         public ConnectionData CollectData() {
             return new ConnectionData() {
-                start = _startPoint._data.ID,
-                end = _endPoint._data.ID,
+                start = _startPoint.ID,
+                end = _endPoint.ID,
             };
         }
 
@@ -67,17 +73,17 @@ namespace Levitan {
             if (_tempTarget != null) {
                 _endPoint = _tempTarget;
 
-                if (_startPoint is not DraggableDialog && _endPoint is not DraggableDialog) {
-                    Debug.Log("You can't connect TAG to TAG");
+                if (!_endPoint.CanAddConnection(_startPoint)) {
                     CancelConnection();
                     return;
                 }
 
-                if (_startPoint.HasSameConnection(_endPoint._data.ID)) {
+                if (_startPoint.HasSameConnection(_endPoint.ID)) {
                     Debug.Log("You already draw this connection.");
                     CancelConnection();
                     return;
                 }
+
                 _isDragging = false;
                 //SendThemMessages
                 _startPoint.AddConnection(this);
@@ -96,7 +102,7 @@ namespace Levitan {
         }
 
         public void Redraw() {
-            _line.SetPosition(0, _startPoint.GetRectEdgeForPosition(_endPoint.transform.position));
+            _line.SetPosition(0, _startPoint.GetRectEdgeForPosition(_endPoint.Position));
             _line.SetPosition(1, _endPoint.GetRectEdgeForPosition(_line.GetPosition(0)));
             _lineStart.transform.position = _line.GetPosition(0);
             _lineEnd.transform.position = _line.GetPosition(1);
@@ -127,7 +133,6 @@ namespace Levitan {
                 ?.GetComponent<IDraggable>();
             _tempTarget = collidedDraggable;
             if (collidedDraggable != null) {
-                Debug.Log(collidedDraggable.gameObject.name);
                 //AttachArrowToSideOfIt
             } else {
                 _tempTarget = null;
@@ -139,14 +144,13 @@ namespace Levitan {
         }
 
         public void DisconnectEnd() {
-            if(AppManager.instance._cameraController.IsEditing)
+            if (AppManager.instance._cameraController.IsEditing)
                 return;
             _startPoint.RemoveConnection(this);
             _endPoint.RemoveConnection(this);
             _isDragging = true;
             _tempTarget = null;
             _endPoint = null;
-          
         }
 
         public void DisconnectAndDelete() {

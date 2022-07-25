@@ -11,4 +11,9 @@ public class CursorMenu : MonoBehaviour {
         AppManager.instance._workspaceManager.InstantiateDialog();
         gameObject.SetActive(false);
     }
+    
+    public void CreateThought() {
+        AppManager.instance._workspaceManager.InstantiateThought();
+        gameObject.SetActive(false);
+    }
 }

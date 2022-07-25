@@ -65,14 +65,17 @@ public class DialogEditPanel : MonoBehaviour {
         if (lines.Length > 0) {
             
             dirtyText = $@"<color={(isRed?"red":"blue")}>"+ lines[0].Insert(0, "<i><color=grey>" + 0 + ". </color></i>") + "</color>";
-            for (int i = 1; i < lines.Length; i++) {
-                if(lines[i].Length == 0) {
-                    if (lines[i][0] != '-') {
-                        isRed = !isRed;
+            if (lines.Length > 1) {
+                for (int i = 1; i < lines.Length; i++) {
+                    if (lines[i].Length == 0) {
+                        if (lines[i][0] != '-') {
+                            isRed = !isRed;
+                        }
                     }
+
+                    dirtyText += "\n" + $@"<color={(isRed ? "red" : "blue")}>" +
+                                 lines[i].Insert(0, "<i><color=grey>" + i + ". </color></i>") + "</color>";
                 }
-              
-                dirtyText += "\n" +$@"<color={(isRed?"red":"blue")}>" + lines[i].Insert(0, "<i><color=grey>" + i + ". </color></i>") + "</color>";
             }
         }
 

@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 
 public class DraggableDialog : IDraggable {
+    
+    [SerializeField]
+    public TransitionsHolder transitionsHolder;
     [SerializeField]
     private TextMeshProUGUI DialogAllText;
 
@@ -13,6 +16,7 @@ public class DraggableDialog : IDraggable {
 
     public override void SetData(DraggableData data) {
         base.SetData(data);
+        transitionsHolder.Init();
         ChangeDialogText(data._dialogData.allText);
     }
 
@@ -20,8 +24,14 @@ public class DraggableDialog : IDraggable {
         _data._dialogData.allText = newText;
         DialogAllText.text = newText;
     }
+
     public void ChangeSayToOperator(string newText) {
         _data._dialogData.SayToOperator = newText;
+    }
+
+    public override void RedrawConnections() {
+        base.RedrawConnections();
+        transitionsHolder.RedrawConnections();
     }
 
     public DialogData CollectDialogData() {
@@ -48,10 +58,11 @@ public class DraggableDialog : IDraggable {
                 }
             }
         }
-        
+
+        data.transitions = transitionsHolder.CollectTransitionsData();
+
         return _data._dialogData;
     }
-    
 }
 
 [System.Serializable]
@@ -65,9 +76,16 @@ public class DialogData {
     public List<string> produceTags;
     public List<string> listenKeys;
     public List<string> listenValues;
+    public List<TransitionData> transitions;
 
     public static DialogData Default => new() {
         name = "NewDialog",
         allText = "PutDialogTextHere..."
     };
+}
+
+[System.Serializable]
+public class TransitionData {
+    public string thought;
+    public string dialog;
 }
