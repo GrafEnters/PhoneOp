@@ -152,6 +152,7 @@ namespace Levitan {
         Dialog,
         Tag,
         Thought,
-        Transition
+        Transition,
+        Information
     }
 }

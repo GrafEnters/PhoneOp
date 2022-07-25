@@ -6,7 +6,11 @@ using UnityEngine;
 public class DraggableDialog : IDraggable {
     
     [SerializeField]
+    public InformationsHolder informationsHolder;
+    
+    [SerializeField]
     public TransitionsHolder transitionsHolder;
+
     [SerializeField]
     private TextMeshProUGUI DialogAllText;
 
@@ -17,7 +21,9 @@ public class DraggableDialog : IDraggable {
     public override void SetData(DraggableData data) {
         base.SetData(data);
         transitionsHolder.Init();
+        informationsHolder.Init();
         ChangeDialogText(data._dialogData.allText);
+        RedrawConnections();
     }
 
     public void ChangeDialogText(string newText) {
@@ -29,9 +35,28 @@ public class DraggableDialog : IDraggable {
         _data._dialogData.SayToOperator = newText;
     }
 
+    public void InstantiateInformation(int line, string text) {
+        DraggableData data = new() {
+            _connectionsList = new List<ConnectionData>(),
+            _dialogData = new DialogData() {
+                ID = _data.ID,
+                from = line,
+                allText = text,
+            },
+            ID = System.Guid.NewGuid().ToString()
+        };
+        AppManager.instance._workspaceManager.InstantiateInformation(data);
+    }
+
+    public void RemoveInformation(int line) {
+        informationsHolder.RemoveInformation(line);
+    }
+    
+    
     public override void RedrawConnections() {
         base.RedrawConnections();
         transitionsHolder.RedrawConnections();
+        informationsHolder.RedrawConnections();
     }
 
     public DialogData CollectDialogData() {
@@ -60,6 +85,7 @@ public class DraggableDialog : IDraggable {
         }
 
         data.transitions = transitionsHolder.CollectTransitionsData();
+        data.informations = informationsHolder.CollectInformationsData();
 
         return _data._dialogData;
     }
@@ -76,12 +102,19 @@ public class DialogData {
     public List<string> produceTags;
     public List<string> listenKeys;
     public List<string> listenValues;
+    public List<NewInformationData> informations;
     public List<TransitionData> transitions;
 
     public static DialogData Default => new() {
         name = "NewDialog",
         allText = "PutDialogTextHere..."
     };
+}
+
+[System.Serializable]
+public class NewInformationData {
+    public int lineIndex;
+    public string thought;
 }
 
 [System.Serializable]

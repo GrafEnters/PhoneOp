@@ -12,6 +12,7 @@ public class Dialog : ScriptableObject {
     public List<string> produceTags;
     public List<string> forbiddenTags;
     public List<TransitionData> Transitions;
+    public List<NewInformationData> Informations;
     
     public string[] toUnlock;
 

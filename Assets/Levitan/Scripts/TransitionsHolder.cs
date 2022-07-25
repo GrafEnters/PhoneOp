@@ -54,8 +54,6 @@ public class TransitionsHolder : MonoBehaviour {
     }
 
     public void AddEmptyTransition(IDraggable draggable) {
-        if (transitions == null)
-            transitions = new List<Transition>();
         draggable.transform.SetParent(transform);
         Transition transition = draggable as Transition;
         transition.transform.localPosition = new Vector3(0, transitions.Count * -1, 0);
@@ -73,5 +71,6 @@ public class TransitionsHolder : MonoBehaviour {
             transitions[i].transform.localPosition = new Vector3(0, i * -1, 0);
             transitions[i]._number = i;
         }
+        RedrawConnections();
     }
 }

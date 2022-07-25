@@ -17,6 +17,9 @@ namespace Levitan {
         
         [SerializeField]
         private IDraggable TransitionPrefab;
+        
+        [SerializeField]
+        private IDraggable InformationPrefab;
 
         [SerializeField]
         private Connection ConnectionPrefab;
@@ -66,6 +69,9 @@ namespace Levitan {
                         break;
                     case DraggableType.Transition:
                         InstantiateTransition(draggableData);
+                        break;
+                    case DraggableType.Information:
+                        InstantiateInformation(draggableData);
                         break;
                 }
             }
@@ -117,6 +123,14 @@ namespace Levitan {
             draggable._data.Type = DraggableType.Transition;
             
             dialog.transitionsHolder.AddEmptyTransition(draggable);
+        }
+
+        public void InstantiateInformation(DraggableData data) {
+            DraggableDialog dialog = GetDraggableById(data._dialogData.ID) as DraggableDialog;
+            IDraggable draggable = InstantiateDraggable(InformationPrefab, data);
+            draggable._data.Type = DraggableType.Information;
+
+            dialog.informationsHolder.AddEmptyInformation(draggable);
         }
 
         public Connection InstantiateConnection(IDraggable start) {

@@ -34,6 +34,7 @@ public class FileParser : MonoBehaviour {
         res.requirementFrom.roomNumber = dialogData.from;
         res.requirementTo.roomNumber = dialogData.to;
         res.Transitions = dialogData.transitions;
+        res.Informations = dialogData.informations;
         return res;
     }
 
@@ -68,7 +69,7 @@ public class FileParser : MonoBehaviour {
         }
     }
 
-     private static Dialog ParseDialogNew(string[] lines) {
+     public static Dialog ParseDialogNew(string[] lines) {
         Dialog dialog = ScriptableObject.CreateInstance<Dialog>();
 
         dialog.lines = new List<string>();

@@ -107,8 +107,11 @@ namespace Levitan {
             connection.StartDrag();
             CameraController.IsDrawingLine = true;
         }
-        
+
         public virtual bool CanAddConnection(IConnectable start) {
+            if (start is Information && _data.Type == DraggableType.Thought)
+                return true;
+
             if (start is not DraggableDialog && this is not DraggableDialog) {
                 Debug.Log("You can't connect TAG to TAG");
 
