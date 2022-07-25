@@ -20,6 +20,9 @@ public class DraggableDialog : IDraggable {
         _data._dialogData.allText = newText;
         DialogAllText.text = newText;
     }
+    public void ChangeSayToOperator(string newText) {
+        _data._dialogData.SayToOperator = newText;
+    }
 
     public DialogData CollectDialogData() {
         DialogData data = _data._dialogData;
@@ -54,6 +57,8 @@ public class DraggableDialog : IDraggable {
 [System.Serializable]
 public class DialogData {
     public string ID;
+    public string SayToOperator;
+    public int from, to;
     public string allText;
     public string name;
     public List<string> requireTags;

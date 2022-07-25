@@ -15,6 +15,7 @@ namespace Levitan {
         private Vector3 _dialogOffset;
 
         private bool _isDragging;
+        public  bool IsEditing;
 
         [SerializeField]
         private Vector2 _workspaceBounds;
@@ -33,7 +34,7 @@ namespace Levitan {
         }
 
         private void Update() {
-            if (_isDragging) {
+            if (_isDragging || IsEditing) {
                 return;
             }
 
@@ -68,6 +69,8 @@ namespace Levitan {
         }
 
         public void DragCamera() {
+            if(IsEditing)
+                return;
             Vector3 deltaMouse = Input.mousePosition - _mouseStartPos;
             deltaMouse *= moveMultiplier * (ZoomPercent + 1);
             if (deltaMouse.magnitude > minMoveDelta) {

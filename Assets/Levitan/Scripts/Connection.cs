@@ -25,6 +25,8 @@ namespace Levitan {
         }
 
         public void StartDrag() {
+            if(AppManager.instance._cameraController.IsEditing)
+                return;
             _isDragging = true;
         }
 
@@ -137,6 +139,8 @@ namespace Levitan {
         }
 
         public void DisconnectEnd() {
+            if(AppManager.instance._cameraController.IsEditing)
+                return;
             _startPoint.RemoveConnection(this);
             _endPoint.RemoveConnection(this);
             _isDragging = true;

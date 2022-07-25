@@ -77,7 +77,7 @@ namespace Levitan {
         }
 
         public IEnumerator SaveProject() {
-            yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, null,
+            yield return FileBrowser.WaitForSaveDialog(FileBrowser.PickMode.Files, false, null, null,
                 "Select place to save project", "Save");
             if (FileBrowser.Success) {
                 _projectData._draggableDatas = _workspaceManager.CollectWorkspace();
@@ -91,7 +91,8 @@ namespace Levitan {
         }   
 
         public IEnumerator ExportProject() {
-            yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Files, false, null, null,
+           
+            yield return FileBrowser.WaitForSaveDialog(FileBrowser.PickMode.Folders, false, null, null,
                 "Select folder to export", "Export");
             if (FileBrowser.Success) {
                 _workspaceManager.CollectExportData();
@@ -100,7 +101,7 @@ namespace Levitan {
                     if (draggable.Type == DraggableType.Dialog) {
                         Dialog asset = FileParser.ParseDialogData(draggable._dialogData);
                         string json = JsonUtility.ToJson(asset);
-                        File.WriteAllTextAsync(FileBrowser.Result[0], json);
+                        File.WriteAllTextAsync(FileBrowser.Result[0] + Path.DirectorySeparatorChar + draggable._dialogData.name + ".json", json);
                     }
                 }
             } else {

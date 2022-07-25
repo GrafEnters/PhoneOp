@@ -64,12 +64,14 @@ namespace Levitan {
         }
 
         private void OnMouseDown() {
+            if(AppManager.instance._cameraController.IsEditing)
+                return;
             _dragOffset = CameraController.GetDialogPosition() - transform.position;
             _dragOffset.z = 5;
         }
 
         private void OnMouseDrag() {
-            if (CameraController.IsDrawingLine) {
+            if (CameraController.IsDrawingLine || AppManager.instance._cameraController.IsEditing) {
                 return;
             }
 
